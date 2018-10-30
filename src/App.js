@@ -21,9 +21,13 @@ class App extends Component {
 		BackHandler.removeEventListener('hardwareBackPress', this.backHandler);
 	}
 
-	backHandler = () => {
-		this.refs['WEBVIEW_REF'].goBack();
-		return true;
+	backHandler = (e) => {
+		console.log('e', e);
+
+		if (!e) {
+			this.refs['WEBVIEW_REF'].goBack();
+			return true;
+		}
     }
 	
 	render() {
