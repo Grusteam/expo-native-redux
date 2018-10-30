@@ -22,7 +22,7 @@ class App extends Component {
 	}
 
 	backHandler = (e) => {
-		console.log('e', e);
+		// console.log('e', e);
 
 		if (!e) {
 			this.refs['WEBVIEW_REF'].goBack();
