@@ -21,21 +21,23 @@ class App extends Component {
 		BackHandler.removeEventListener('hardwareBackPress', this.backHandler);
 	}
 
-	backHandler = (e) => {
-		// console.log('e', e);
-
-		if (!e) {
-			this.refs['WEBVIEW_REF'].goBack();
-			return true;
-		}
+	backHandler = () => {
+		const webviewRef = this.refs['WEBVIEW_REF'];
+		
+		webviewRef.goBack();
+		return true;
     }
+
+	navigationStateChange({ canGoBack, title, url }) {
+		console.log('canGoBack, title, url', canGoBack, title, url);
+	}
 	
 	render() {
 		return <WebView
 			ref={"WEBVIEW_REF"}
 			source={{uri: 'https://app.iki.ai'}}
 			style={{  }}
-			onNavigationStateChange={this.backHandler.bind(this)}
+			onNavigationStateChange={this.navigationStateChange.bind(this)}
 		/>;
 	}
 }
