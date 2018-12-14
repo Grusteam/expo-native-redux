@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createMaterialTopTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+console.log('createMaterialTopTabNavigator', createMaterialTopTabNavigator);
 
 /* components */
 import LocalStateApp from './components/LocalStateApp.js';
 import ReduxStateApp from './components/ReduxStateApp.js';
 
-export default createAppContainer(createBottomTabNavigator(
+export default createAppContainer(createMaterialTopTabNavigator(
 	{
 		LocalStateApp: {
 			screen: LocalStateApp,
@@ -29,9 +31,22 @@ export default createAppContainer(createBottomTabNavigator(
 		navigationOptions: {
 			/* tabBarVisible: false, */
 		},
+		tabBarPosition: 'bottom',
+		swipeEnabled: true,
+		animationEnabled: true,
 		tabBarOptions: {
-			activeTintColor: 'red',
-			inactiveTintColor: 'blue',
+			// shifting: true,
+			activeTintColor: 'orange',
+			inactiveTintColor: 'grey',
+			style: {
+				backgroundColor: '#f2f2f2',
+				borderTopWidth: 0.5,
+				borderTopColor: 'grey',
+			},
+			indicatorStyle: {
+				height: 1,
+			},
+			showIcon: true,
 		},
 	},
 ));
