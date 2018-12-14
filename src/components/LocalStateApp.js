@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, YellowBox } from 'react-native';
+import { Header, Left, Right, Icon } from 'native-base';
 
 import styles from '../styles/LocalStateApp.js';
 
@@ -20,20 +21,31 @@ export default class LocalStateApp extends Component<Props> {
 	render() {
 		const
 			{ count } = this.state,
-			{ test } = this.props;
+			{ test, navigation: { openDrawer } } = this.props;
 			
-		return  <View style={styles.container}>
-			<Text>LocalStateApp</Text>
-			
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
-				<Text>{test}</Text>
-			</TouchableOpacity>
-			
-			<Text style={styles.color}>{count}</Text>
+		return  <View style={{flex: 1}}>
+			<Header>
+				<Left>
+					<Icon
+						name="menu"
+						onPress={openDrawer}
+					/>
+				</Left>
+			</Header>
+
+			<View style={styles.container}>
+				<Text>LocalStateApp</Text>
 				
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(-1)}>
-				<Text>-</Text>
-			</TouchableOpacity>
+				<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
+					<Text>{test || '+'}</Text>
+				</TouchableOpacity>
+				
+				<Text style={styles.color}>{count}</Text>
+					
+				<TouchableOpacity onPress={() => this.changeCount.bind(this)(-1)}>
+					<Text>-</Text>
+				</TouchableOpacity>
+			</View>
 		</View>
 	}
 }
