@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, YellowBox } from 'react-native';
-
 import styles from '../styles/LocalStateApp.js';
 
-export default class LocalStateApp extends Component<Props> {
+/* components */
+import { Platform, StyleSheet, Text, View, TouchableOpacity, YellowBox, Button } from 'react-native';
+
+export default class LocalStateApp extends Component {
+	static navigationOptions = {
+		// header: null,
+	}
+
 	state = {
 		count: 0,
 	}
@@ -20,19 +25,39 @@ export default class LocalStateApp extends Component<Props> {
 	render() {
 		const
 			{ count } = this.state,
-			{ test } = this.props;
+			{ test, navigation: { navigate } } = this.props;
+
+		console.log('navigate', navigate);
 			
 		return  <View style={styles.container}>
-			<Text>LocalStateApp</Text>
+			<Text style={styles.title}>LocalStateApp</Text>
 			
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
-				<Text>{test}</Text>
+			<TouchableOpacity
+				style={styles.controller}
+				onPress={() => this.changeCount.bind(this)(1)}
+			>
+				<Text style={styles['controller-text']}>
+					{test || '+'}
+				</Text>
 			</TouchableOpacity>
 			
 			<Text style={styles.color}>{count}</Text>
 				
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(-1)}>
-				<Text>-</Text>
+			<TouchableOpacity
+				style={styles.controller}
+				onPress={() => this.changeCount.bind(this)(-1)}
+			>
+				<Text style={styles['controller-text']}>
+					-
+				</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				onPress={() => navigate('ReduxStateApp')}
+			>
+				<Text style={styles.butt}>
+					go to to ReduxStateApp
+				</Text>
 			</TouchableOpacity>
 		</View>
 	}

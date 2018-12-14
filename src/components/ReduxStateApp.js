@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-
 import styles from '../styles/ReduxStateApp.js';
 
-class ReduxStateApp extends Component<Props> {
+/* components */
+import { Text, View, TouchableOpacity, Button } from 'react-native';
+
+class ReduxStateApp extends Component {
+	static navigationOptions = {
+		// header: null,
+	}
+
 	changeCount(arg) {
 		const
-			{ changeCountDispatcher } = this.props, /* redux despatchers */
+			{ changeCountDispatcher } = this.props, /* redux dispatch */
 			{ count } = this.props, /* redux states */
 			nextCount = count + arg;
 			
@@ -16,21 +21,39 @@ class ReduxStateApp extends Component<Props> {
 	
 	render() {
 		const
-			{ test } = this.props, /* native */
-			{ changeCountDispatcher } = this.props, /* redux despatchers */
+			{ test, navigation: { navigate } } = this.props, /* native */
+			{ changeCountDispatcher } = this.props, /* redux dispatch */
 			{ count } = this.props; /* redux states */
 			
 		return  <View style={styles.container}>
-			<Text>ReduxStateApp</Text>
+			<Text style={styles.title}>ReduxStateApp</Text>
 			
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
-				<Text>{test}</Text>
+			<TouchableOpacity
+				style={styles.controller}
+				onPress={() => this.changeCount.bind(this)(1)}
+			>
+				<Text style={styles['controller-text']}>
+					{test || '+'}
+				</Text>
 			</TouchableOpacity>
 			
 			<Text style={styles.red}>{count}</Text>
 				
-			<TouchableOpacity onPress={() => this.changeCount.bind(this)(-1)}>
-				<Text>-</Text>
+			<TouchableOpacity
+				style={styles.controller}
+				onPress={() => this.changeCount.bind(this)(-1)}
+			>
+				<Text style={styles['controller-text']}>
+					-
+				</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				onPress={() => navigate('LocalStateApp')}
+			>
+				<Text style={styles.butt}>
+					go to to LocalStateApp
+				</Text>
 			</TouchableOpacity>
 		</View>
 	}

@@ -1,20 +1,13 @@
-import React, { Component } from 'react';
-import {  } from 'redux';
-import {  } from 'react-redux';
-
-import styles from './styles/App.js';
-
-/* components */
-import { View } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 /* components */
 import LocalStateApp from './components/LocalStateApp.js';
 import ReduxStateApp from './components/ReduxStateApp.js';
 
-class App extends Component {
-	render() {
-		return <ReduxStateApp test={'+'}/>
-	}
-}
+const MainNavigator = createStackNavigator({
+	LocalStateApp,
+	ReduxStateApp,
+});
 
-export default App;
+
+export default createAppContainer(MainNavigator);
