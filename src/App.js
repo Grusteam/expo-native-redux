@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
-import {  } from 'redux';
-import {  } from 'react-redux';
-
-import styles from './styles/App.js';
-
-/* components */
-import { View } from 'react-native';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 /* components */
 import LocalStateApp from './components/LocalStateApp.js';
 import ReduxStateApp from './components/ReduxStateApp.js';
 
-class App extends Component {
-	render() {
-		return <ReduxStateApp test={'+'}/>
-	}
-}
-
-export default App;
+export default createAppContainer(createBottomTabNavigator(
+	{
+		LocalStateApp: {
+			screen: LocalStateApp,
+			navigationOptions: {
+				tabBarLabel: 'Local',
+				tabBarIcon: ({ tintColor }) => <Icon color={tintColor} name='ios-home' size={24}/>,
+			}
+		},
+		ReduxStateApp: {
+			screen: ReduxStateApp,
+			navigationOptions: {
+				tabBarLabel: 'Redux',
+				tabBarIcon: ({ tintColor }) => <Icon color={tintColor} name='ios-settings' size={24}/>,
+			}
+		},
+	},
+	{
+		initialRouteName: 'ReduxStateApp',
+		order: ['ReduxStateApp', 'LocalStateApp'],
+		navigationOptions: {
+			/* tabBarVisible: false, */
+		},
+		tabBarOptions: {
+			activeTintColor: 'red',
+			inactiveTintColor: 'blue',
+		},
+	},
+));

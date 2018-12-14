@@ -24,7 +24,7 @@ class ReduxStateApp extends Component<Props> {
 			<Text>ReduxStateApp</Text>
 			
 			<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
-				<Text>{test}</Text>
+				<Text>{test || '+'}</Text>
 			</TouchableOpacity>
 			
 			<Text style={styles.red}>{count}</Text>

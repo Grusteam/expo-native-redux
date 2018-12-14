@@ -26,7 +26,7 @@ export default class LocalStateApp extends Component<Props> {
 			<Text>LocalStateApp</Text>
 			
 			<TouchableOpacity onPress={() => this.changeCount.bind(this)(1)}>
-				<Text>{test}</Text>
+				<Text>{test || '+'}</Text>
 			</TouchableOpacity>
 			
 			<Text style={styles.color}>{count}</Text>
