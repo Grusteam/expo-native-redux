@@ -17,19 +17,19 @@ const
   );
   
 /* components */
-import App from './src/App.js';
+import Router from './src/Router.js';
 
 type Props = {};
 
-class ReduxApp extends Component<Props> {
+class ReduxRouter extends Component<Props> {
   render() {
     const {  } = this.props;
     
     return <Provider store={store}>
-      <App/>
+      <Router/>
     </Provider>
   }
 }
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Remote debugger']);
-export default ReduxApp;
+export default ReduxRouter;
