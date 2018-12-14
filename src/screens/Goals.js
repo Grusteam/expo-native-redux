@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import {
+	createSwitchNavigator,
+	createAppContainer,
+	createStackNavigator,
+	createMaterialTopTabNavigator,
+	createDrawerNavigator,
+} from 'react-navigation';
+import {
     SafeAreaView,
     View,
     Text,
-    StyleSheet,
-    TouchableOpacity,
+    StyleSheet
 } from 'react-native';
 
-class Login extends Component {
+class Goals extends Component {
     render() {
         const { navigation: { navigate } } = this.props;
 
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigate('Home')}>
-				<Text>Login</Text>
-			</TouchableOpacity>
+                <Text>Goals</Text>
             </View>
         );
     }
 }
-export default Login;
+export default Goals;
 
 const styles = StyleSheet.create({
     container: {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
 	createSwitchNavigator,
 	createAppContainer,
@@ -11,7 +11,7 @@ import {
     View,
     Text,
     StyleSheet
-} from "react-native";
+} from 'react-native';
 
 class Home extends Component {
     render() {

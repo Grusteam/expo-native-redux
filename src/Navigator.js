@@ -6,19 +6,27 @@ import {
 	createSwitchNavigator,
 	createDrawerNavigator,
 	createStackNavigator,
-	createMaterialTopTabNavigator,
+	createBottomTabNavigator,
 } from 'react-navigation';
 import * as nativeBase from 'native-base';
+
+/* components */
+import {
+	TouchableOpacity
+} from 'react-native';
 
 /* screens */
 import Home from './screens/Home';
 import Login from './screens/Login';
+import Feed from './screens/Feed';
+import Goals from './screens/Goals';
 
 
 /* уровень роута, навигатор - Tab */
-const HomeTabNavigator = createMaterialTopTabNavigator(
+const HomeTabNavigator = createBottomTabNavigator(
 	{
-		Home,
+		Feed,
+		Goals,
 	}
 );
 
