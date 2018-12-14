@@ -33,7 +33,12 @@ const HomeTabNavigator = createBottomTabNavigator(
 /* уровень роута, навигатор - Stack */
 const HomeStackNavigator = createStackNavigator(
 	{
-		Home: HomeTabNavigator,
+		Home: {
+			screen: HomeTabNavigator,
+			navigationOptions: ({ navigation }) => ({
+				title: 'iki'
+			})
+		},
 	}
 );
 
