@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { 
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity,
 } from 'react-native';
 
-class Password extends Component {
+class Profile extends Component {
     render() {
+        const { navigation: { navigate } } = this.props;
+
         return (
             <View style={styles.container}>
-                <Text>Password</Text>
+                <Text>Profile</Text>
             </View>
         );
     }
 }
-export default Password;
+export default Profile;
 
 const styles = StyleSheet.create({
     container: {

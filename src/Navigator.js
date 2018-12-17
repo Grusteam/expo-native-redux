@@ -1,14 +1,38 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {
+    createAppContainer,
+    createSwitchNavigator,
+    createBottomTabNavigator,
+    createStackNavigator,
+} from 'react-navigation';
 
-/* screens */
+/* screens> */
 import Home from './screens/Home';
-import Mail from './screens/Mail';
-import Password from './screens/Password';
 
-const HomeSwitchNavigator = createSwitchNavigator({
-    Home,
-    Mail,
-    Password,
+import Mail from './screens/Login/Mail';
+import Password from './screens/Login/Password';
+
+import Feed from './screens/Main/Feed';
+import Goals from './screens/Main/Goals';
+import Paths from './screens/Main/Paths';
+import Profile from './screens/Main/Feed';
+/* <screens */
+
+const mainTabNavigator = createBottomTabNavigator({
+    Feed,
+    Goals,
+    Paths,
+    Profile,
 });
 
-export default createAppContainer(HomeSwitchNavigator);
+const loginSwitchNavigator = createSwitchNavigator({
+    Mail,
+    Password,
+    Main: mainTabNavigator,
+});
+
+const homeSwitchNavigator = createSwitchNavigator({
+    Home,
+    loginSwitchNavigator,
+});
+
+export default createAppContainer(homeSwitchNavigator);

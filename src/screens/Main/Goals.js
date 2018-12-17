@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { 
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity,
 } from 'react-native';
 
-class Mail extends Component {
+class Goals extends Component {
     render() {
+        const { navigation: { navigate } } = this.props;
+
         return (
             <View style={styles.container}>
-                <Text>Mail</Text>
+                <Text>Goals</Text>
             </View>
         );
     }
 }
-export default Mail;
+export default Goals;
 
 const styles = StyleSheet.create({
     container: {

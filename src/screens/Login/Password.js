@@ -6,21 +6,21 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-class Home extends Component {
+class Password extends Component {
     render() {
-    const { navigation: { navigate } } = this.props;
-    
+        const { navigation: { navigate } } = this.props;
+
         return (
             <View style={styles.container}>
-                <Text>Home</Text>
-                <TouchableOpacity onPress={() => navigate('Mail')}>
-                    <Text>Mail</Text>
+                <Text>Password</Text>
+                <TouchableOpacity onPress={() => navigate('Main')}>
+                    <Text>Main</Text>
                 </TouchableOpacity>
             </View>
         );
     }
 }
-export default Home;
+export default Password;
 
 const styles = StyleSheet.create({
     container: {

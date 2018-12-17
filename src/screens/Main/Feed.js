@@ -6,21 +6,18 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-class Home extends Component {
+class Feed extends Component {
     render() {
-    const { navigation: { navigate } } = this.props;
-    
+        const { navigation: { navigate } } = this.props;
+
         return (
             <View style={styles.container}>
-                <Text>Home</Text>
-                <TouchableOpacity onPress={() => navigate('Mail')}>
-                    <Text>Mail</Text>
-                </TouchableOpacity>
+                <Text>Feed</Text>
             </View>
         );
     }
 }
-export default Home;
+export default Feed;
 
 const styles = StyleSheet.create({
     container: {
