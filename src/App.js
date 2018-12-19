@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {  } from 'redux';
 import {  } from 'react-redux';
-import { WebView, StatusBar, BackHandler } from 'react-native';
 
 import styles from './styles/App.js';
 
-/* components */
-import { View } from 'react-native';
-
-/* components */
+/* native components */
+import {
+	View,
+	WebView,
+	StatusBar,
+	BackHandler,
+	SafeAreaView,
+} from 'react-native';
 
 class App extends Component {
 	componentDidMount() {
@@ -33,17 +36,22 @@ class App extends Component {
 	}
 	
 	render() {
-		return <WebView
-			ref={"WEBVIEW_REF"}
-			source={{uri: 'https://app.iki.ai'}}
-			style={{  }}
-			onNavigationStateChange={this.navigationStateChange.bind(this)}
-		/>;
+		return (
+		<SafeAreaView>
+			<WebView
+				ref={"WEBVIEW_REF"}
+				source={{uri: 'https://app.iki.ai'}}
+				useWebKit={true}
+				allowsBackForwardNavigationGestures={true}
+				style={{  }}
+				onNavigationStateChange={this.navigationStateChange.bind(this)}
+			/>
+		</SafeAreaView>
+		);
 	}
 }
 
 export default App;
-		
 		
 /* return <ReduxStateApp test={'+++++'}/> */
 {/* <StatusBar hidden /> */}
