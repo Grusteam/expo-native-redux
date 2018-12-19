@@ -37,21 +37,14 @@ class App extends Component {
 	
 	render() {
 		return (
-		<SafeAreaView>
 			<WebView
 				ref={"WEBVIEW_REF"}
 				source={{uri: 'https://app.iki.ai'}}
 				useWebKit={true}
-				allowsBackForwardNavigationGestures={true}
 				style={{  }}
-				onNavigationStateChange={this.navigationStateChange.bind(this)}
 			/>
-		</SafeAreaView>
 		);
 	}
 }
 
 export default App;
-		
-/* return <ReduxStateApp test={'+++++'}/> */
-{/* <StatusBar hidden /> */}
