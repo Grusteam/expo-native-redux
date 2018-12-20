@@ -14,6 +14,15 @@ import {
 } from 'react-native';
 
 class App extends Component {
+	constructor(props) {
+		super();
+		
+		console.log('props', props);
+
+		this.navigationStateChange = this.navigationStateChange.bind(this);
+		this.backHandler = this.backHandler.bind(this);
+	}
+
 	componentDidMount() {
 		StatusBar.setHidden(true);
 
@@ -24,6 +33,8 @@ class App extends Component {
 		BackHandler.removeEventListener('hardwareBackPress', this.backHandler);
 	}
 
+	/* ... . .-. --. . / --.. .... ..- .-. .- ...- .-.. . ...- */
+
 	backHandler = () => {
 		const webviewRef = this.refs['WEBVIEW_REF'];
 		
@@ -31,17 +42,32 @@ class App extends Component {
 		return true;
     }
 
-	navigationStateChange({ canGoBack, title, url }) {
-		console.log('canGoBack, title, url', canGoBack, title, url);
+	navigationStateChange(navState) {
+		const
+			{ canGoBack, title, url, loading } = navState,
+			webviewRef = this.refs['WEBVIEW_REF'];
+
+		// console.log('navState', navState);
+
+		if (canGoBack) {
+			// console.log(1);
+			setTimeout(() => {
+				// console.log(2);
+				webviewRef.goBack();
+			}, 10000);
+		}
 	}
 	
 	render() {
+		const { navigationStateChange } = this;
+
 		return (
 			<WebView
 				ref={"WEBVIEW_REF"}
 				source={{uri: 'https://app.iki.ai'}}
 				useWebKit={true}
 				style={{  }}
+				onNavigationStateChange={navigationStateChange}
 			/>
 		);
 	}
